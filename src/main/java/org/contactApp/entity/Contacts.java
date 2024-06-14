@@ -1,16 +1,16 @@
 package org.contactApp.entity;
 
 public class Contacts {
-    private int phoneNumber;
+    private String phoneNumber;
     private  String name;
     private String location;
     private String email;
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -38,7 +38,7 @@ public class Contacts {
         this.email = email;
     }
 
-    public Contacts(int phoneNumber, String name, String location, String email) {
+    public Contacts(String phoneNumber, String name, String location, String email) {
         this.phoneNumber = phoneNumber;
         this.name = name;
         this.location = location;
@@ -50,11 +50,10 @@ public class Contacts {
 
     @Override
     public String toString() {
-        return "Contacts{" +
-                "phoneNumber=" + phoneNumber +
-                ", name='" + name + '\'' +
-                ", location='" + location + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "Contacts :----------" +
+                "\nphoneNumber=" + phoneNumber +
+                "\nname= " + name +
+                "\nlocation= " + location +
+                "\nemail= " + email ;
     }
 }
