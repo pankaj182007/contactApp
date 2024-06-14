@@ -1,8 +1,8 @@
-package org.contactApp.doa;
+package org.contactApp.dao;
 
 import org.contactApp.entity.Contacts;
 
-public interface ContactDoa {
+public interface ContactDao {
 
     public int addContact(Contacts contacts);
 }
