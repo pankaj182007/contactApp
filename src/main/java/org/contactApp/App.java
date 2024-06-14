@@ -22,6 +22,7 @@ public class App
 
         Scanner scanner=new Scanner(System.in);
         Contacts contacts=new Contacts();
+        int result=0;
 
         System.out.println("---------------Welcome to Contact App--------------");
         int exit =0;
@@ -40,17 +41,45 @@ public class App
                     System.out.print("Enter Phone number : ");
                     contacts.setPhoneNumber(scanner.nextLine());
 
-                    System.out.print("\nEnter Phone Name : ");
+                    System.out.print("\nEnter  Name : ");
                     contacts.setName(scanner.nextLine());
 
-                    System.out.print("\nEnter Phone Location : ");
+                    System.out.print("\nEnter  Location : ");
                     contacts.setLocation(scanner.nextLine());
 
-                    System.out.print("\nEnter Phone Email : ");
+                    System.out.print("\nEnter  Email : ");
                     contacts.setEmail(scanner.nextLine());
 
-                    int result = contactDao.addContact(contacts);
+                     result = contactDao.addContact(contacts);
                     System.out.println("Number of records : " + result);
+                    break;
+                case 3:
+                    System.out.print("Enter Phone number : ");
+                    contacts=contactDao.fetchContact(scanner.nextLine());
+                    System.out.println(contacts.toString());
+
+
+                    break;
+                case 4:
+                    System.out.print("Enter phone number : ");
+                    String old=scanner.nextLine();
+
+                    System.out.println("-------Enter New Details------");
+                    System.out.print("\nEnter new phone number : ");
+                    contacts.setPhoneNumber(scanner.nextLine());
+
+                    System.out.print("\nEnter New Name : ");
+                    contacts.setName(scanner.nextLine());
+
+                    System.out.print("\nEnter New Location : ");
+                    contacts.setLocation(scanner.nextLine());
+
+                    System.out.print("\nEnter New Email : ");
+                    contacts.setEmail(scanner.nextLine());
+
+                     result=contactDao.updateContact(contacts,old);
+                    System.out.println("Number of Row Uploaded : "+ result);
+
                     break;
 
                 case 0:
