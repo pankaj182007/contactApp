@@ -4,6 +4,8 @@ import org.contactApp.entity.Contacts;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import java.util.List;
+
 public class ContactDaoImpl implements ContactDao {
 
     JdbcTemplate jdbcTemplate;
@@ -28,6 +30,19 @@ public class ContactDaoImpl implements ContactDao {
         RowMapper<Contacts> rowMapper=new RowMapperImpl();
         Contacts contacts=jdbcTemplate.queryForObject(selectQuary,rowMapper,phone);
         return contacts;
+    }
+
+    @Override
+    public List<Contacts> allContacts() {
+        String selectAllQuary="select * from contacts";
+        RowMapper<Contacts> rowMapper=new RowMapperImpl();
+        return jdbcTemplate.query(selectAllQuary,rowMapper);
+    }
+
+    @Override
+    public int deleteContact(String phoneNumber) {
+        String deleteQuary="delete from contacts where phone=?";
+        return jdbcTemplate.update(deleteQuary,phoneNumber);
     }
 
     public JdbcTemplate getJdbcTemplate() {

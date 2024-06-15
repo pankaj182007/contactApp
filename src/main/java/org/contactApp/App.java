@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.net.Socket;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -53,13 +54,21 @@ public class App
                      result = contactDao.addContact(contacts);
                     System.out.println("Number of records : " + result);
                     break;
+
+                case 2:
+                    List<Contacts> allContacts= contactDao.allContacts();
+                    System.out.println("--------------All Contacts----------");
+                    for (Contacts c:allContacts)
+                    {
+                        System.out.println(c);
+                    }
+                    break;
                 case 3:
                     System.out.print("Enter Phone number : ");
                     contacts=contactDao.fetchContact(scanner.nextLine());
                     System.out.println(contacts.toString());
-
-
                     break;
+
                 case 4:
                     System.out.print("Enter phone number : ");
                     String old=scanner.nextLine();
@@ -80,6 +89,12 @@ public class App
                      result=contactDao.updateContact(contacts,old);
                     System.out.println("Number of Row Uploaded : "+ result);
 
+                    break;
+
+                case 5:
+                    System.out.print("Enter phone number : ");
+                    result=contactDao.deleteContact(scanner.nextLine());
+                    System.out.println("Number of row deleted : "+result);
                     break;
 
                 case 0:
