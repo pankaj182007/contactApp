@@ -4,6 +4,7 @@ import org.contactApp.dao.ContactDao;
 import org.contactApp.dao.ContactDaoImpl;
 import org.contactApp.entity.Contacts;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.net.Socket;
@@ -18,8 +19,14 @@ public class App
 {
     public static void main( String[] args )
     {
-        ApplicationContext context=new ClassPathXmlApplicationContext("contactConfig.xml");
-        ContactDao contactDao =context.getBean("contactDaoImpl", ContactDaoImpl.class);
+        //-----------------------------XML Configuration setting--------------------------------------
+//        ApplicationContext context=new ClassPathXmlApplicationContext("contactConfig.xml");
+//        ContactDao contactDao =context.getBean("contactDaoImpl", ContactDaoImpl.class);
+
+        //============================Java Configuration setting=======================================
+
+        ApplicationContext context=new AnnotationConfigApplicationContext(ContactConfig.class);
+        ContactDao contactDao= context.getBean("contactDaoImpl",ContactDao.class);
 
         Scanner scanner=new Scanner(System.in);
         Contacts contacts=new Contacts();
